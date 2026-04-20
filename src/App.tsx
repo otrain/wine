@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { BottomNav } from '@/components/BottomNav'
+import { BottomNav, NAV_HEIGHT } from '@/components/BottomNav'
 import { DashboardPage } from '@/features/dashboard/DashboardPage'
 import { WineListPage } from '@/features/wine-list/WineListPage'
 import { WineFormPage } from '@/features/wine-form/WineFormPage'
@@ -45,15 +45,17 @@ function AppContent() {
 
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<DashboardPage />} />
-        <Route path="/wines" element={<WineListPage />} />
-        <Route path="/wines/new" element={<WineFormPage mode="create" />} />
-        <Route path="/wines/:id" element={<WineDetailPage />} />
-        <Route path="/wines/:id/edit" element={<WineFormPage mode="edit" />} />
-        <Route path="/explore" element={<ExplorePage />} />
-        <Route path="/export" element={<ExportPage />} />
-      </Routes>
+      <div style={{ paddingBottom: NAV_HEIGHT }}>
+        <Routes>
+          <Route path="/" element={<DashboardPage />} />
+          <Route path="/wines" element={<WineListPage />} />
+          <Route path="/wines/new" element={<WineFormPage mode="create" />} />
+          <Route path="/wines/:id" element={<WineDetailPage />} />
+          <Route path="/wines/:id/edit" element={<WineFormPage mode="edit" />} />
+          <Route path="/explore" element={<ExplorePage />} />
+          <Route path="/export" element={<ExportPage />} />
+        </Routes>
+      </div>
       <BottomNav />
       {!isOnline && (
         <div className="fixed bottom-16 inset-x-0 bg-amber-800 text-amber-100 text-sm text-center py-1 z-50">

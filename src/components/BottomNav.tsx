@@ -2,6 +2,8 @@ import { NavLink } from 'react-router-dom'
 import { Home, List, BarChart2, Download } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
+export const NAV_HEIGHT = 64
+
 const LINKS = [
   { to: '/',        icon: Home,     label: 'Home' },
   { to: '/wines',   icon: List,     label: 'Wines' },
